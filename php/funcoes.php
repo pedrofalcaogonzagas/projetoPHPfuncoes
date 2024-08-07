@@ -55,7 +55,7 @@
         $i = 0;
         $resultado = "";
         for($i; $i<10;$i++){
-            $resultado .= "<br>".$num1." * ".$i." + ". ($num1*$i);
+            $resultado .= "\n" .$num1." * ".$i." = ". ($num1*$i);
         }
         return $resultado;
     }//fim taboada
@@ -72,7 +72,7 @@
 
 
     //9
-    function delta($a, $b, $c){
+    function delta($x,$a, $b, $c){
         $x = pow($b,2) - 4 * $a * $c;
         if ($x < 0){
             return -1;
@@ -83,9 +83,8 @@
 
 
     
-    function x1($a,$b,$c){
-        $x = delta($a,$b,$c);
-        if ($x == -1){
+    function x1($x,$b,$a){
+        if ($x < 0){
             return "impossivel calcular x1, delta negativo";
         }else{
             return(-$b +sqrt($x))/(2*$a);
@@ -93,9 +92,8 @@
     }//fim x1
 
 
-    function x2($a,$b,$c){
-        $x = delta($a,$b,$c);
-        if ($x == -1){
+    function x2($x,$b,$a){
+        if ($x < 0){
             return "impossivel calcular x2, delta negativo";
         }else{
             return(-$b +sqrt($x))/(2*$a);
@@ -200,7 +198,7 @@
         $pares = "";
         for ($i; $i <=$num; $i++){
             if($i % 2 == 0){
-                $pares .= "<br>".$i;
+                $pares .= "\n".$i;
             }
         }
         return $pares;
@@ -253,14 +251,23 @@
     }
       
 
+    function mostrarPrimos($num){
+        $numPrimos = "";
+        $i=1;
+        for($i;$i <= $num; $i++){
+                if(primo($i) != "Não é primo"){
+                $numPrimos .= "<br>".$i;
+        }
+    }
+        return $numPrimos;
+}
     
         
-    function data($num1, $num2, $num3){
+    function data($mes, $dia, $ano){
         $dia = 29;
         $mes = 7;
         $ano = 2024;
-        if (checkdate($mes, $dia, $ano
-        )){
+        if (checkdate($mes, $dia, $ano)){
             return "a data é valida";
         }else{
             return "a data é invalida";
@@ -295,22 +302,70 @@
         $fib0 = 0;
         $fib1 = 0;
         $fib2 = 0;
-        $resultado = $fib0."<br>".$fib1."<br>";
+        $resultado = $fib0."/n".$fib1."/n";
         
-        for($i; $i <=)
+        for($i; $i <= $num; $i++){
+            $fib2 = $fib0 + $fib1;
+            $resultado .= $fib2;
+            $fib0 = $fib1;
+            $fib1 = $fib2;
+        }
+        return $resultado;
     }
     
 
     //lista 2 
+    
+    function idadeDias($anosDias,$idade,$mesesDias,$meses,$resultado,$dias){
+       $anosDias = $idade * 365;
+       $mesesDias = $meses * 30;
+       $resultado = $anosDias + $mesesDias + $dias;
+       return $resultado;
+    }
+    
 
-    function idade($num1,$num2,$num3){
-        $resul = $num2 * 30;
-        $resul2 = $num3 * 365;
-        $reuslFinal = $num1 + $resul + $resul2;
-        return $reuslFinal;
+    function macas($num){
+        if ($num < 12 ){
+            return $num * 1.30;
+        }else{
+            $num * 1;
+        }
+        return $num;
     }
 
-    
+    function vendaCarro($salario,$venda){
+        if ($venda > 1500){
+            $salario = $salario + $venda * 5 / 100;
+        }else{
+            $salario = $salario + $venda * 3 / 100;
+        }
+        return $salario;
+    }
+
+    function debito($debito,$credito,$saldo,$saldoAtual){
+        
+        $saldoAtual = $saldo - $debito + $credito;
+        if ($saldoAtual < 0 ){
+            return "seu saldo esta negativo";
+        }else{
+            return "seu saldo esta positivo";
+        }
+         
+    }
+
+
+    function taboadaDnv($num,$resultado){
+        $i = 0;
+        $resultado = "";
+        for($i; $i<10;$i++){
+            $resultado .= "\n" .$num." * ".$i." = ". ($num*$i);
+        }
+        return $resultado;
+    }
+
+
+
+    /*
     echo " <br> a soma dos numeros é: ".somar(5,9);
     echo " <br> a subtração dos numeros é ".subtrair(3,9);
     echo " <br> a multiplicação dos numeros é ".multiplicar(8,5);
@@ -339,4 +394,5 @@
     echo " <br> a quantidade de palavras é ".contarPalavras("tamo junto");
     //lista2 
     echo "<br> a idade em dias é ".idade(18,12,2007);
+    */
 ?> 
